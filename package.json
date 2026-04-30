@@ -1,0 +1,19 @@
+{
+  "name": "ajoullm-cli",
+  "version": "0.1.1",
+  "description": "A small CLI for chatting with Mindlogic Gateway models.",
+  "bin": {
+    "ajoullm": "./bin/ajoullm.js"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "start": "node ./bin/ajoullm.js",
+    "chat": "node ./bin/ajoullm.js chat",
+    "config": "node ./bin/ajoullm.js config",
+    "check": "node ./scripts/check.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "license": "MIT"
+}

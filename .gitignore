@@ -1,0 +1,10 @@
+.ajoullmrc.json
+.ajoullm/agent-session.json
+.ajoullm/project-context.json
+.ajoullm/tui-session.json
+ajoullm.md
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

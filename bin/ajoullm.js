@@ -108,8 +108,7 @@ async function main() {
   if (command === "interactive") { await promptLoop(); return; }
   if (command === "code") { await handleCodeCommand(rest); return; }
   if (command === "agent") { await handleAgentCommand(rest, parseArgs); return; }
-  if (!KNOWN_COMMANDS.has(command)) { await handleDefaultInvocation([command, ...rest]); return; }
-  fail(`Unknown command: ${command}`);
+  await handleDefaultInvocation([command, ...rest]);
 }
 
 main().catch((error) => {

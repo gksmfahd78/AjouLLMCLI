@@ -27,7 +27,7 @@ ajoullm
 ```powershell
 .\ajoullm.cmd config init
 $env:AJOULLM_API_KEY="YOUR_API_KEY"
-.\ajoullm.cmd config set model gpt-5-nano
+.\ajoullm.cmd config set model gpt-5.4-nano
 .\ajoullm.cmd
 ```
 
@@ -117,7 +117,7 @@ TUI 명령:
 .\ajoullm.cmd config show
 .\ajoullm.cmd config path
 .\ajoullm.cmd config set apiKey YOUR_API_KEY
-.\ajoullm.cmd config set model gpt-5-nano
+.\ajoullm.cmd config set model gpt-5.4-nano
 .\ajoullm.cmd config set baseUrl https://factchat-cloud.mindlogic.ai/v1/gateway
 .\ajoullm.cmd config set systemPrompt "Answer in Korean."
 .\ajoullm.cmd config set temperature 0.3
@@ -222,7 +222,7 @@ TUI에서는 `/status`와 오른쪽 상태 패널에서 최종 응답 모델, �
 ## API 기본값
 
 - 기본 base URL: `https://factchat-cloud.mindlogic.ai/v1/gateway`
-- 기본 모델: `gpt-5-nano`
+- 기본 모델: `gpt-5.4-nano`
 - 기본 temperature: `0.3`
 - 기본 request timeout: `120000ms`
 - 채팅 엔드포인트: `POST /chat/completions/`

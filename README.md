@@ -124,6 +124,8 @@ TUI 명령:
 .\ajoullm.cmd config set topP 1
 .\ajoullm.cmd config set maxTokens 2048
 .\ajoullm.cmd config set stream false
+.\ajoullm.cmd config set reviewModel gpt-5.4-nano
+.\ajoullm.cmd config set reviewFallback false
 .\ajoullm.cmd config unset systemPrompt
 .\ajoullm.cmd config reset
 ```
@@ -138,6 +140,8 @@ TUI 명령:
 - `topP`
 - `maxTokens`
 - `stream`
+- `reviewModel`
+- `reviewFallback`
 
 설정 우선순위:
 
@@ -155,6 +159,7 @@ TUI 명령:
 - `AJOULLM_TOP_P`
 - `AJOULLM_MAX_TOKENS`
 - `AJOULLM_STREAM`
+- `AJOULLM_REVIEW_MODEL`
 - `AJOULLM_REVIEW_FALLBACK`
 - `AJOULLM_REQUEST_TIMEOUT_MS`
 

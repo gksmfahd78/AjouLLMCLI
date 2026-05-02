@@ -2,7 +2,9 @@ const childProcess = require("child_process");
 const fs = require("fs");
 const path = require("path");
 const api = require("../lib/api");
+const config = require("../lib/config");
 const render = require("../lib/render");
+const workspace = require("../lib/workspace");
 
 const root = path.resolve(__dirname, "..");
 
@@ -61,7 +63,54 @@ function checkApiConfig() {
   else process.env.AJOULLM_REQUEST_TIMEOUT_MS = original;
 }
 
+function checkConfigParsing() {
+  if (config.parseBoolean("TRUE") !== true) {
+    throw new Error("parseBoolean should accept uppercase true values");
+  }
+  if (config.parseBoolean("False") !== false) {
+    throw new Error("parseBoolean should accept mixed-case false values");
+  }
+}
+
+async function checkCommandErrors() {
+  const tmpDir = fs.mkdtempSync(path.join(process.cwd(), ".ajoullm-check-"));
+  const script = [
+    `const { handleModelsCommand } = require(${JSON.stringify(path.join(root, "lib/commands/credits"))});`,
+    "handleModelsCommand().then(() => process.exit(2)).catch((error) => {",
+    "  if (/Missing API key/.test(error.message)) process.exit(0);",
+    "  console.error(error.message || String(error));",
+    "  process.exit(1);",
+    "});"
+  ].join("\n");
+  try {
+    childProcess.execFileSync(process.execPath, ["-e", script], {
+      cwd: tmpDir,
+      env: { ...process.env, AJOULLM_API_KEY: "" },
+      stdio: "pipe"
+    });
+  } finally {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
+}
+
+function checkWorkspaceCacheInvalidation() {
+  workspace.PROJECT_FILE_CACHE.cwd = process.cwd();
+  workspace.PROJECT_FILE_CACHE.files = ["stale.js"];
+  workspace.PROJECT_FILE_CACHE.expiresAt = Date.now() + 10000;
+  workspace.invalidateProjectFileCache();
+  if (workspace.PROJECT_FILE_CACHE.files !== null || workspace.PROJECT_FILE_CACHE.expiresAt !== 0) {
+    throw new Error("invalidateProjectFileCache should clear in-memory project file cache");
+  }
+}
+
 checkSyntax();
 checkRenderWrapping();
 checkApiConfig();
-console.log("[check] ok");
+checkConfigParsing();
+checkWorkspaceCacheInvalidation();
+checkCommandErrors().then(() => {
+  console.log("[check] ok");
+}).catch((error) => {
+  console.error(error.message || String(error));
+  process.exit(1);
+});

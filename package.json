@@ -3,8 +3,15 @@
   "version": "0.1.1",
   "description": "A small CLI for chatting with Mindlogic Gateway models.",
   "bin": {
-    "ajoullm": "./bin/ajoullm.js"
+    "ajoullm": "bin/ajoullm.js"
   },
+  "files": [
+    "ajoullm.cmd",
+    "ajoullm.ps1",
+    "bin",
+    "lib",
+    "README.md"
+  ],
   "type": "commonjs",
   "scripts": {
     "start": "node ./bin/ajoullm.js",

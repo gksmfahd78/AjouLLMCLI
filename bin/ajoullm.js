@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const { KNOWN_COMMANDS } = require("../lib/paths");
 const { getRuntimeConfig } = require("../lib/config");
 const { fail } = require("../lib/utils");
 const { promptLoop } = require("../lib/tui");
@@ -65,6 +64,7 @@ Code commands:
 Config keys:
   apiKey, model, baseUrl, systemPrompt
   temperature, topP, maxTokens, stream
+  reviewModel, reviewFallback
 
 TUI commands:
   /help

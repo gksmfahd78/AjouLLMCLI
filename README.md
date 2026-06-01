@@ -11,6 +11,10 @@ Node.js CLI/TUI for using Mindlogic Gateway models from the terminal. It support
 - Agent mode for model-generated full-file edits
 - Local config through environment variables or `.ajoullmrc.json`
 
+## Screenshots
+
+Screenshot and GIF slots are prepared in [`docs/screenshots`](docs/screenshots). Add terminal captures there when recording the CLI/TUI flow.
+
 ## Requirements
 
 - Node.js 18.17 or newer

@@ -1,7 +1,7 @@
 {
   "name": "ajoullm-cli",
   "version": "0.1.1",
-  "description": "A small CLI for chatting with Mindlogic Gateway models.",
+  "description": "Node.js CLI/TUI for using Mindlogic Gateway models with project context, planning, and agent-style file edits.",
   "bin": {
     "ajoullm": "bin/ajoullm.js"
   },
@@ -10,7 +10,8 @@
     "ajoullm.ps1",
     "bin",
     "lib",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "type": "commonjs",
   "scripts": {
@@ -22,5 +23,20 @@
   "engines": {
     "node": ">=18.17"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gksmfahd78/AjouLLMCLI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gksmfahd78/AjouLLMCLI/issues"
+  },
+  "homepage": "https://github.com/gksmfahd78/AjouLLMCLI#readme",
+  "keywords": [
+    "llm",
+    "cli",
+    "tui",
+    "agent",
+    "developer-tools"
+  ],
   "license": "MIT"
 }
